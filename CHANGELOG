@@ -1,5 +1,16 @@
-0.5.12   2020-12-03
+0.5.13	   2023-03-17
+* integration of several pull requests pending
+* #44 Fixed formatting in README.md by diogotito
+* #56 use execl() instead of system() as possible fix for #52 by philfry
+* #75 Solve #36 1 and debian bug #947425 by schplurtz
+* #79 fix typo in incrond.8 by dessert1
+* #90 incrontab.5: fix typo by eworm-de
+* #91 Get safe path by eworm-de
+* #94 fixed add folders with space in incrontab by AndreyBarmaley
+
+0.5.12-1   2020-12-03
 * fix SEGV when directory are created in watched directories
+
 0.5.12   2015-02-01
 * added recursive directory watching
 * added configuration parameters: recursive, dotdirs and loopable
