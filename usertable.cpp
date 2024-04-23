@@ -275,9 +275,13 @@ void UserTable::Load()
     
     // skip if recursion is not wanted by user
     if (rE.IsNoRecursion())
+    {
+	syslog(LOG_INFO, "load path: `%s', recursion: %s", rE.GetPath().c_str(), "false");
 		continue;
+    }
     
     std::vector<std::string> ssvec = Executor::getSubDirVec (rE.GetPath(),rE.IsDotDirs());
+    syslog(LOG_INFO, "load path: `%s', recursion: %s, subdirs: %d", rE.GetPath().c_str(), "true", ssvec.size());
 	if (rE.GetPath().find("*") != std::string::npos) 
 	{
 		std::vector<std::string> allfilesvec = Executor::getAllFilesByDescriptor (rE.GetPath(),rE.IsDotDirs());
@@ -330,9 +334,9 @@ void UserTable::AddTabEntry(IncronTabEntry& rE)
       m_map.insert(IWCE_MAP::value_type(pW, &rE));
     } catch (InotifyException e) {
       if (m_fSysTable)
-        syslog(LOG_ERR, "cannot create watch for system table %s: (%i) %s", m_user.c_str(), e.GetErrorNumber(), strerror(e.GetErrorNumber()));
+        syslog(LOG_ERR, "cannot create watch for system table %s: (%i) %s, path: `%s'", m_user.c_str(), e.GetErrorNumber(), strerror(e.GetErrorNumber()), rE.GetPath().c_str());
       else
-        syslog(LOG_ERR, "cannot create watch for user %s: (%i) %s", m_user.c_str(), e.GetErrorNumber(), strerror(e.GetErrorNumber()));
+        syslog(LOG_ERR, "cannot create watch for user %s: (%i) %s, path: `%s'", m_user.c_str(), e.GetErrorNumber(), strerror(e.GetErrorNumber()), rE.GetPath().c_str());
       delete pW;
     }	
 }
@@ -386,6 +390,7 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
   syslog(LOG_INFO, "PATH (%s) FILE (%s) EVENT (%s)", pW->GetPath().c_str() , IncronTabEntry::GetSafePath(rEvt.GetName()).c_str() , events.c_str());
   //#endif
   
+  std::string WPath = pW->GetPath(); // FIXME: Should Dispose() be moved after "$@" param is treated ?
   // add new watch for newly created subdirs
   if ( rEvt.IsType(IN_ISDIR) && (rEvt.IsType(IN_CREATE) || rEvt.IsType(IN_MOVED_TO)) )
   {
@@ -422,7 +427,7 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
       else {
         cmd.append(cs.substr(oldpos, pos-oldpos));
         if (cs[px] == '@') {          // base path
-          cmd.append(IncronTabEntry::GetSafePath(pW->GetPath()));
+          cmd.append(IncronTabEntry::GetSafePath(WPath));
           oldpos = pos + 2;
         }
         else if (cs[px] == '#') {     // file name
@@ -471,7 +476,7 @@ void UserTable::OnEvent(InotifyEvent& rEvt)
 
     // for system table
     if (m_fSysTable) {
-      if (system(cmd.c_str()) != 0) // exec failed
+      if (execl("/bin/sh","sh", "-c", cmd.c_str(), (char *)0) != 0) // exec failed
       {
         syslog(LOG_ERR, "cannot exec process: %s", strerror(errno));
         _exit(1);

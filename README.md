@@ -95,6 +95,7 @@ the same syntax as for the crontab program. You can import a table,
 remove and edit the current table.
 
 The user table rows have the following syntax:
+
  `<path> <mask> <command>`
 
 Where:
@@ -175,7 +176,7 @@ please use the bug tracking system at https://github.com/dpvpro/incron-next/issu
 ## Licensing
 
 This program is free software.
-You can redistribute it and/or modify it under the terms of the GNU General Public License, version 2  (see LICENSE-GPL).
+You can redistribute it and/or modify it under the terms of the GNU General Public License, version 3  (see LICENSE-GPL).
 
 Some parts may be also covered by other licenses.
 Please look into the source files for detailed information.
