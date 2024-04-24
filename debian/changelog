@@ -1,10 +1,22 @@
+incron-next (0.5.15-1) unstable; urgency=medium
+
+  * aggregate changes
+
+ -- Denis Proskurin <dpvpro@gmail.com>  Tue, 23 Apr 2024 06:04:13 +0300
+
 incron-next (0.5.14-2) unstable; urgency=medium
 
-  * integration of several pull requests (https://github.com/avcbvamorec/incron)
-  * 0.5.14 version
+  * integration of several pull requests pending   (https://github.com/avcbvamorec/incron)
+  * #44 Fixed formatting in README.md by diogotito
+  * #56 use execl() instead of system() as possible fix for #52 by philfry
+  * #75 Solve #36 1 and debian bug #947425 by schplurtz
+  * #79 fix typo in incrond.8 by dessert1
+  * #90 incrontab.5: fix typo by eworm-de
+  * #91 Get safe path by eworm-de
+  * #94 fixed add folders with space in incrontab by AndreyBarmaley
+  * fix SEGV when directory are created in watched directories
 
- -- Denis Proskurin <dpvpro@gmail.com>  Tue, 17 Aug 2021 22:53:33 +0300
-
+ -- Denis Proskurin <dpvpro@gmail.com>  Tue, 17 Mar 2023 08:46:01 +0300
 
 incron (0.5.13-1) unstable; urgency=medium
 
@@ -143,5 +155,3 @@ incron (0.5.5-1) unstable; urgency=low
   * Initial release (Closes: #409173)
 
  -- Emmanuel Bouthenot <kolter@openics.org>  Sat, 17 Feb 2007 11:03:57 +0100
-
-
