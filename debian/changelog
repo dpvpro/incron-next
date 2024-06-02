@@ -1,3 +1,9 @@
+incron-next (0.5.15-2) unstable; urgency=medium
+
+  * changes in systemd service
+
+ -- Denis Proskurin <dpvpro@gmail.com>  Fri, 14 Jun 2024 17:39:13 +0300
+
 incron-next (0.5.15-1) unstable; urgency=medium
 
   * aggregate changes

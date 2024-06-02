@@ -8,6 +8,7 @@ override_dh_auto_install:
 override_dh_install:
 	dh_install
 	install -m 644 incron.conf.example $(CURDIR)/debian/$(PACKAGE)/etc/incron.conf
+	install -m 644 debian/incrond.service $(CURDIR)/debian/$(PACKAGE)/usr/lib/systemd/system/incrond.service
 	touch $(CURDIR)/debian/$(PACKAGE)/etc/incron.allow
 	touch $(CURDIR)/debian/$(PACKAGE)/etc/incron.deny
 
