@@ -29,7 +29,7 @@ unfortunatally abandoned in 2012.
 Upstream development and bug-tracking/fixing continued in 2014 on GitHub:
 https://github.com/ar-/incron.
 
-In 2017 Andreas Altair Redmer stop support your fork.
+In 2017 Andreas Altair Redmer had been stoped maintain your fork.
 
 Now bug-tracking/fixing continued in 2023 on GitHub:
 https://github.com/dpvpro/incron-next.
