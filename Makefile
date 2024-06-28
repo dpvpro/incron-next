@@ -18,7 +18,7 @@ INSTALL = install
 OPTIMIZE = -O2 -pedantic
 DEBUG = -g0
 #DEBUG = -g
-WARNINGS = -Wall -W -Wshadow -Wpointer-arith -Wwrite-strings -ffor-scope
+WARNINGS = -Wall -W -Wshadow -Wpointer-arith -Wwrite-strings 
 #WARNINGS = -Wall -W 
 CXXAUX = -pipe
 

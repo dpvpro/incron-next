@@ -281,7 +281,7 @@ void UserTable::Load()
     }
     
     std::vector<std::string> ssvec = Executor::getSubDirVec (rE.GetPath(),rE.IsDotDirs());
-    syslog(LOG_INFO, "load path: `%s', recursion: %s, subdirs: %d", rE.GetPath().c_str(), "true", ssvec.size());
+    syslog(LOG_INFO, "load path: `%s', recursion: %s, subdirs: %lu", rE.GetPath().c_str(), "true", ssvec.size());
 	if (rE.GetPath().find("*") != std::string::npos) 
 	{
 		std::vector<std::string> allfilesvec = Executor::getAllFilesByDescriptor (rE.GetPath(),rE.IsDotDirs());
