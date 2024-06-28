@@ -29,9 +29,9 @@ unfortunatally abandoned in 2012.
 Upstream development and bug-tracking/fixing continued in 2014 on GitHub:
 https://github.com/ar-/incron.
 
-In 2017 Andreas Altair Redmer stop support your fork.
+In 2017 Andreas Altair Redmer stopped maintain the project.
 
-Now bug-tracking/fixing continued in 2023 on GitHub:
+Upstream development and bug-tracking/fixing continued in 2023 on GitHub:
 https://github.com/dpvpro/incron-next.
 
 ## Obtain the source code
@@ -143,7 +143,7 @@ the configuration. See the example file for more information.
 an argument every time a MP3 file is moved to in /home/u1/Music. One of
 the solutions follows:
 
-`/home/u1/Music/*.mp3 IN_MOVED_TO playmp3 $@/$#`
+`/home/user/music/*.mp3 IN_MOVED_TO playmp3 $@/$#`
 
 **Example 4**: You need to observe the directory /etc/
 recursively and report every change in the syslog. One of
@@ -162,7 +162,7 @@ recursively, including all the hidden sub-directories and hidden files
 (dotfiles/dotdirectories) and report every change in the syslog.
 One of the solutions follows:
 
-`/home/user1 IN_CLOSE_WRITE,dotdirs=true echo $@/$# | logger`
+`/home/user IN_CLOSE_WRITE,dotdirs=true echo $@/$# | logger`
 
 
 ## Bugs, suggestions
