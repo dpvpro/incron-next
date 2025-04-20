@@ -1,11 +1,10 @@
-
 PREFIX = /usr/local
 USERDATADIR = /var/spool/incron
 SYSDATADIR = /etc/incron.d
 INITDIR = /etc/init
 CFGDIR = /etc
 MANPATH = $(PREFIX)/share/man
-RELEASE = incron-`cat VERSION`
+RELEASE = incron-$(shell cat VERSION)
 RELEASEDIR = /tmp/$(RELEASE)
 DOCDIR = $(PREFIX)/share/doc/$(RELEASE)/
 
@@ -88,7 +87,8 @@ release:
 	cp *.h $(RELEASEDIR)
 	cp *.cpp $(RELEASEDIR)
 	cp incron.conf.example $(RELEASEDIR)
-	cp Makefile CHANGELOG COPYING LICENSE-GPL LICENSE-LGPL LICENSE-X11 README TODO VERSION $(RELEASEDIR)
+	cp Makefile $(RELEASEDIR)
+	cp CHANGELOG COPYING LICENSE-GPL LICENSE-LGPL LICENSE-X11 README TODO VERSION $(RELEASEDIR)
 	cp incrond.8 incrontab.1 incrontab.5 incron.conf.5 $(RELEASEDIR)
 	tar -c -f $(RELEASE).tar -C $(RELEASEDIR)/.. $(RELEASE)
 	bzip2 -9 $(RELEASE).tar
